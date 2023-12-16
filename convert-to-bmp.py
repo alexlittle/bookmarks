@@ -2,7 +2,7 @@ import glob
 import os
 import subprocess
 
-SOURCE_DIR = "/home/alex/data/personal/designshop/laser-cutting/bookmarks/names/"
+from local_settings import SOURCE_DIR
 
 path = SOURCE_DIR + "*.png"
 
@@ -14,5 +14,9 @@ for f in files:
 
     if not os.path.isfile(os.path.join(SOURCE_DIR, outfile)):
         print("Converting %s" % infile)
-        subprocess.run(["convert", "-quality", "100", os.path.join(SOURCE_DIR, infile), os.path.join(SOURCE_DIR, outfile)])
+        subprocess.run(["convert",
+                        "-quality",
+                        "100",
+                        os.path.join(SOURCE_DIR, infile),
+                        os.path.join(SOURCE_DIR, outfile)])
 
